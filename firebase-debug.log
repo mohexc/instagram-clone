@@ -1,0 +1,21 @@
+[debug] [2020-09-19T13:51:05.263Z] ----------------------------------------------------------------------
+[debug] [2020-09-19T13:51:05.266Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-09-19T13:51:05.267Z] CLI Version:   8.10.0
+[debug] [2020-09-19T13:51:05.267Z] Platform:      win32
+[debug] [2020-09-19T13:51:05.267Z] Node Version:  v10.22.0
+[debug] [2020-09-19T13:51:05.268Z] Time:          Sat Sep 19 2020 20:51:05 GMT+0700 (Indochina Time)
+[debug] [2020-09-19T13:51:05.268Z] ----------------------------------------------------------------------
+[debug] [2020-09-19T13:51:05.268Z] 
+[debug] [2020-09-19T13:51:05.277Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-09-19T13:51:05.278Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\0.Work shop programming\4.reactJs\5.instagram-clone
+
