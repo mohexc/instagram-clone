@@ -37,7 +37,7 @@ const SignUp = (prop, ref) => {
   return (
     <Modal
       destroyOnClose={true}
-      closable={() => setVisible(true)}
+      closable={false}
       title="Sign Up"
       visible={visible}
       footer={false}
