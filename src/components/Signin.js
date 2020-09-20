@@ -47,7 +47,7 @@ const SignIn = (prop, ref) => {
           <Input />
         </Form.Item>
         <Form.Item name="password" label="password" rules={[{ required: true, message: 'Please input your password!', },]}>
-          <Input />
+          <Input.Password />
         </Form.Item>
         <Form.Item>
           <Row justify="end">

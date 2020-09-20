@@ -1,5 +1,6 @@
 import React, { useImperativeHandle, useState } from 'react'
 import { Modal, Button, Form, Input, message, Row } from 'antd';
+import { auth } from '../config/firebase';
 
 const layout = {
   labelCol: {
@@ -27,6 +28,8 @@ const SignUp = (prop, ref) => {
 
   const onFinish = (values) => {
     message.info(JSON.stringify(values))
+    auth.createUserWithEmailAndPassword(values.username, values.password)
+      .catch(err => message.error(`${err}`))
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -50,7 +53,7 @@ const SignUp = (prop, ref) => {
           <Input />
         </Form.Item>
         <Form.Item name="password" label="password" rules={[{ required: true, message: 'Please input your password!', },]}>
-          <Input />
+          <Input.Password />
         </Form.Item>
         <Form.Item>
           <Row justify="end">
