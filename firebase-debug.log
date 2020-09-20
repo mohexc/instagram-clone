@@ -19,3 +19,24 @@ You're about to initialize a Firebase project in this directory:
 
   D:\0.Work shop programming\4.reactJs\5.instagram-clone
 
+[debug] [2020-09-20T03:03:46.219Z] ----------------------------------------------------------------------
+[debug] [2020-09-20T03:03:46.222Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-09-20T03:03:46.223Z] CLI Version:   8.10.0
+[debug] [2020-09-20T03:03:46.224Z] Platform:      win32
+[debug] [2020-09-20T03:03:46.224Z] Node Version:  v10.22.0
+[debug] [2020-09-20T03:03:46.226Z] Time:          Sun Sep 20 2020 10:03:46 GMT+0700 (Indochina Time)
+[debug] [2020-09-20T03:03:46.227Z] ----------------------------------------------------------------------
+[debug] [2020-09-20T03:03:46.227Z] 
+[debug] [2020-09-20T03:03:46.278Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-09-20T03:03:46.279Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\0.Work shop programming\4.reactJs\5.instagram-clone
+

@@ -3,8 +3,7 @@ import React from 'react'
 import '../styles/Post.less'
 
 const Post = ({ data }) => {
-    console.log(data)
-    debugger
+
     return (
         <div className="post">
             <div className="post__header">

@@ -1,4 +1,4 @@
-import * as firebase from "firebase/app";
+import * as firebase from "firebase";
 import "firebase/storage";
 import "firebase/firestore";
 
@@ -13,7 +13,8 @@ const firebaseApp = firebase.initializeApp({
   measurementId: process.env.REACT_APP_MEASUREMENTID,
 });
 const db = firebaseApp.firestore();
-const storage = firebaseApp.storage();
+const storage = firebase.storage();
+const auth = firebase.auth()
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-export { db, storage, timestamp };
+export { db, storage, timestamp, auth };
