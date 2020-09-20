@@ -14,7 +14,7 @@ const layout = {
 };
 
 // Main
-const SignUp = (prop, ref) => {
+const SignUp = ({ setUsername }, ref) => {
   const [visible, setVisible] = useState(false)
   const [submitButton, setSubmitButton] = useState(false)
 
@@ -27,13 +27,15 @@ const SignUp = (prop, ref) => {
   })
 
   const onFinish = (values) => {
-    message.info(JSON.stringify(values))
-    auth.createUserWithEmailAndPassword(values.username, values.password)
-      .catch(err => message.error(`${err}`))
+    console.log(values)
+
+    setUsername(values.username)
+    auth.createUserWithEmailAndPassword(values.email, values.password)
+      .catch(err => console.log(`💥💥💥 ${err}`))
   }
 
   const onFinishFailed = (errorInfo) => {
-    message.error(`Failed: ${JSON.stringify(errorInfo)}`)
+    console.log(`Failed: ${JSON.stringify(errorInfo)}`)
   }
 
 
