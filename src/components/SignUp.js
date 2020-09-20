@@ -13,7 +13,7 @@ const layout = {
 };
 
 // Main
-const SignIn = (prop, ref) => {
+const SignUp = (prop, ref) => {
   const [visible, setVisible] = useState(false)
   const [submitButton, setSubmitButton] = useState(false)
 
@@ -37,12 +37,15 @@ const SignIn = (prop, ref) => {
   return (
     <Modal
       destroyOnClose={true}
-      closable={false}
-      title="Sign in"
+      closable={() => setVisible(true)}
+      title="Sign Up"
       visible={visible}
       footer={false}
     >
-      <Form  {...layout} onFinish={onFinish} onFinishFailed={onFinishFailed}>
+      <Form   {...layout} name="SignUp" onFinish={onFinish} onFinishFailed={onFinishFailed}>
+        <Form.Item name="email" label="email" rules={[{ required: true, message: 'Please input your username!', }, { type: 'email', message: 'The input is not valid E-mail!', },]}>
+          <Input />
+        </Form.Item>
         <Form.Item name="username" label="username" rules={[{ required: true, message: 'Please input your username!', },]}>
           <Input />
         </Form.Item>
@@ -60,4 +63,4 @@ const SignIn = (prop, ref) => {
   )
 }
 
-export default React.forwardRef(SignIn)
+export default React.forwardRef(SignUp)
