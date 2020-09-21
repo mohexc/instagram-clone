@@ -12,26 +12,9 @@ import { useAuthContext } from './context/AuthContext';
 const App = () => {
 
   const [posts, setPosts] = useState([])
-  const [userInfo, setUserInfo] = useState(null)
-  const [username, setUsername] = useState('')
   const signinModalRef = useRef()
   const signupModalRef = useRef()
-  const { user, setUser } = useAuthContext()
-
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        setUser(authUser)
-        // user has logged in...
-      } else {
-        // user has logged out...
-        setUserInfo(null)
-      }
-    })
-
-    return () => { unsubscribe() }
-  }, [userInfo, username, setUser])
+  const { user } = useAuthContext()
 
   useEffect(() => {
     db.collection('posts').onSnapshot(snapshot => {
@@ -53,16 +36,18 @@ const App = () => {
           <div >
             {user
               ? <Button onClick={() => auth.signOut()}>Logout</Button>
-              : <div>
-                <Button style={{ marginRight: '1rem' }} onClick={() => signinModalRef.current.showModal()}>Sign In</Button>
-                <Button onClick={() => signupModalRef.current.showModal()}>Sign Up</Button>
-              </div>
+              : (
+                <div>
+                  <Button style={{ marginRight: '1rem' }} onClick={() => signinModalRef.current.showModal()}>Sign In</Button>
+                  <Button onClick={() => signupModalRef.current.showModal()}>Sign Up</Button>
+                </div>
+              )
             }
 
           </div>
         </Row>
         <SignIn ref={signinModalRef} />
-        <SignUp ref={signupModalRef} setUsername={setUsername} />
+        <SignUp ref={signupModalRef} />
       </div>
       {posts.map(post => <Post key={post.id} data={post} />)}
     </div>

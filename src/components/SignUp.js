@@ -1,5 +1,5 @@
 import React, { useImperativeHandle, useState } from 'react'
-import { Modal, Button, Form, Input, Row } from 'antd';
+import { Modal, Button, Form, Input, Row, message } from 'antd';
 import { auth } from '../config/firebase';
 
 const layout = {
@@ -14,7 +14,7 @@ const layout = {
 };
 
 // Main
-const SignUp = ({ setUsername }, ref) => {
+const SignUp = (props, ref) => {
   const [visible, setVisible] = useState(false)
   const [submitButton, setSubmitButton] = useState(false)
 
@@ -28,19 +28,10 @@ const SignUp = ({ setUsername }, ref) => {
 
   const onFinish = (values) => {
     setSubmitButton(true)
-    setUsername(values.username)
-    auth.createUserWithEmailAndPassword(values.email, values.password)
-      .then((authUser) => {
-        setSubmitButton(false)
-        authUser.user.updateProfile({
-          displayName: values.username
-        })
-        return
-      })
-      .catch(err => {
-        console.log(`💥💥💥 ${err}`)
-        return
-      })
+    auth
+      .createUserWithEmailAndPassword(values.email, values.password)
+      .catch(err => message.error(`💥💥💥 ${err.message}`))
+    setSubmitButton(false)
   }
 
   const onFinishFailed = (errorInfo) => {
