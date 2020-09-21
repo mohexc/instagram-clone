@@ -1,5 +1,6 @@
 import React, { useImperativeHandle, useState } from 'react'
 import { Modal, Button, Form, Input, message, Row } from 'antd';
+import { auth } from 'firebase';
 
 const layout = {
   labelCol: {
@@ -26,7 +27,13 @@ const SignIn = (prop, ref) => {
   })
 
   const onFinish = (values) => {
-    message.info(JSON.stringify(values))
+    setSubmitButton(false)
+    auth
+      .signInWithEmailAndPassword(values.email, values.password)
+      .then()
+      .catch((error) => message.error(`${error.message}`))
+
+    setSubmitButton(true)
   }
 
   const onFinishFailed = (errorInfo) => {
