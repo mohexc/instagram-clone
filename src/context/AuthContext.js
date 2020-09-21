@@ -3,7 +3,7 @@ import { auth } from '../config/firebase'
 const Context = React.createContext();
 
 const AuthContext = ({ children }) => {
-    const [user, setUser] = useState()
+    const [user, setUser] = useState('')
     const [timestamp, settimestamp] = useState(Date.now());
 
     useEffect(() => {
@@ -14,10 +14,14 @@ const AuthContext = ({ children }) => {
     useEffect(() => {
         unsubscribe()
         // eslint-disable-next-line
-    }, [timestamp])
+    }, [timestamp, user])
 
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
-        return authUser ? setUser(authUser) : setUser(null)
+        if (authUser) {
+            setUser(authUser)
+        } else {
+            setUser(null)
+        }
     })
 
     const reloadAuthContext = () => settimestamp(Date.now());

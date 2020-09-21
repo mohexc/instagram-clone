@@ -1,6 +1,7 @@
 import React, { useImperativeHandle, useState } from 'react'
 import { Modal, Button, Form, Input, Row, message } from 'antd';
 import { auth } from '../config/firebase';
+import { useAuthContext } from '../context/AuthContext';
 
 const layout = {
   labelCol: {
@@ -17,6 +18,7 @@ const layout = {
 const SignUp = (props, ref) => {
   const [visible, setVisible] = useState(false)
   const [submitButton, setSubmitButton] = useState(false)
+  const { reloadAuthContext } = useAuthContext()
 
   useImperativeHandle(ref, () => {
     return {
@@ -31,6 +33,8 @@ const SignUp = (props, ref) => {
     auth
       .createUserWithEmailAndPassword(values.email, values.password)
       .catch(err => message.error(`💥💥💥 ${err.message}`))
+    reloadAuthContext()
+    setVisible(false)
     setSubmitButton(false)
   }
 

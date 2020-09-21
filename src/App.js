@@ -24,6 +24,7 @@ const App = () => {
     })
   }, [])
 
+
   return (
     <div className="app">
       <div className="app__header" >
@@ -48,6 +49,9 @@ const App = () => {
         </Row>
         <SignIn ref={signinModalRef} />
         <SignUp ref={signupModalRef} />
+      </div>
+      <div>
+        {user && <p>{user.email}</p>}
       </div>
       {posts.map(post => <Post key={post.id} data={post} />)}
     </div>

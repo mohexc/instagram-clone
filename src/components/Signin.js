@@ -1,6 +1,7 @@
 import React, { useImperativeHandle, useState } from 'react'
 import { Modal, Button, Form, Input, message, Row } from 'antd';
 import { auth } from '../config/firebase'
+import { useAuthContext } from '../context/AuthContext';
 
 const layout = {
   labelCol: {
@@ -17,7 +18,7 @@ const layout = {
 const SignIn = (prop, ref) => {
   const [visible, setVisible] = useState(false)
   const [submitButton, setSubmitButton] = useState(false)
-
+  const { reloadAuthContext } = useAuthContext()
   useImperativeHandle(ref, () => {
     return {
       showModal: () => {
@@ -27,10 +28,15 @@ const SignIn = (prop, ref) => {
   })
 
   const onFinish = (values) => {
+
     setSubmitButton(false)
     auth.signInWithEmailAndPassword(values.email, values.password)
       .catch((error) => message.error(`${error.message}`))
+    reloadAuthContext()
     setSubmitButton(true)
+    setVisible(false)
+    message.info(`🚀🚀🚀🚀`)
+
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -47,7 +53,7 @@ const SignIn = (prop, ref) => {
       footer={false}
     >
       <Form  {...layout} onFinish={onFinish} onFinishFailed={onFinishFailed}>
-        <Form.Item name="username" label="username" rules={[{ required: true, message: 'Please input your username!', },]}>
+        <Form.Item name="email" label="username" rules={[{ required: true, message: 'Please input your username!', }, { type: 'email', message: 'The input is not valid E-mail!' }]}>
           <Input />
         </Form.Item>
         <Form.Item name="password" label="password" rules={[{ required: true, message: 'Please input your password!', },]}>
