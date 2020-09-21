@@ -27,11 +27,20 @@ const SignUp = ({ setUsername }, ref) => {
   })
 
   const onFinish = (values) => {
-    console.log(values)
-
+    setSubmitButton(true)
     setUsername(values.username)
     auth.createUserWithEmailAndPassword(values.email, values.password)
-      .catch(err => console.log(`💥💥💥 ${err}`))
+      .then((authUser) => {
+        setSubmitButton(false)
+        authUser.user.updateProfile({
+          displayName: values.username
+        })
+        return
+      })
+      .catch(err => {
+        console.log(`💥💥💥 ${err}`)
+        return
+      })
   }
 
   const onFinishFailed = (errorInfo) => {

@@ -4,9 +4,13 @@ import "antd/dist/antd.css";
 import './index.less';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import AuthContext from "./context/AuthContext"
 
 ReactDOM.render(
-  <App />,
+  <AuthContext>
+    <App />
+  </AuthContext>
+  ,
   document.getElementById('root')
 );
 

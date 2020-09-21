@@ -5,6 +5,7 @@ import Post from './components/Post';
 // import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import { db, auth } from './config/firebase.js'
+import { useAuthContext } from './context/AuthContext';
 
 
 // main
@@ -15,6 +16,8 @@ const App = () => {
   const [username, setUsername] = useState('')
   // const signinModalRef = useRef()
   const signupModalRef = useRef()
+  const { user, setUser } = useAuthContext()
+
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -59,6 +62,9 @@ const App = () => {
 
           <div >
             {/* <Button style={{ marginRight: '1rem' }} onClick={() => signinModalRef.current.showModal()}>Sign In</Button> */}
+            {user
+              ? <Button onClick={() => auth.signOut}>Logout</Button>
+              : <Button onClick={() => signupModalRef.current.showModal()}>Sign Up</Button>}
             <Button onClick={() => signupModalRef.current.showModal()}>Sign Up</Button>
           </div>
         </Row>
