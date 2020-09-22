@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { message } from 'antd';
 import { auth } from '../config/firebase'
 const Context = React.createContext();
 
@@ -26,10 +27,15 @@ const AuthContext = ({ children }) => {
 
     const reloadAuthContext = () => settimestamp(Date.now());
 
+    const logout = () => {
+        auth.signOut().catch(e => message.error(e.message))
+        unsubscribe()
+    }
+
     return (
         <Context.Provider value={{
             user,
-            setUser,
+            logout,
             reloadAuthContext
         }}>
             {children}

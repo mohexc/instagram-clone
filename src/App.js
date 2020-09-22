@@ -4,7 +4,7 @@ import './App.less';
 import Post from './components/Post';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import { db, auth } from './config/firebase.js'
+import { db } from './config/firebase.js'
 import { useAuthContext } from './context/AuthContext';
 
 
@@ -14,7 +14,7 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const signinModalRef = useRef()
   const signupModalRef = useRef()
-  const { user } = useAuthContext()
+  const { user, logout } = useAuthContext()
 
   useEffect(() => {
     db.collection('posts').onSnapshot(snapshot => {
@@ -36,7 +36,7 @@ const App = () => {
 
           <div >
             {user
-              ? <Button onClick={() => auth.signOut()}>Logout</Button>
+              ? <Button onClick={() => logout()}>Logout</Button>
               : (
                 <div>
                   <Button style={{ marginRight: '1rem' }} onClick={() => signinModalRef.current.showModal()}>Sign In</Button>

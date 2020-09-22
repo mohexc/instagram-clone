@@ -31,7 +31,7 @@ const SignIn = (prop, ref) => {
 
     setSubmitButton(false)
     auth.signInWithEmailAndPassword(values.email, values.password)
-      .catch((error) => message.error(`${error.message}`))
+      .catch(err => message.error(`💥💥💥 ${err.message}`))
     reloadAuthContext()
     setSubmitButton(true)
     setVisible(false)
